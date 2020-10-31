@@ -1,2 +1,7 @@
 # personal-meal-planner
-Need this to track weekly groceries and budget plus health stuff I guess. also neumorphism because why not?
+This goal of this app is to track:
+
+- Groceries
+- Meals
+- Diet
+- Cost

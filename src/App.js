@@ -1,10 +1,15 @@
-import './App.css';
+import React from "react";
+import { store } from "./store";
+import Nav from "./components/Nav";
+import "ui-neumorphism/dist/index.css";
+import "./index.css";
 
-function App() {
+export default function App() {
+  const {state} = React.useContext(store);
+  // console.log('APP->',state);
   return (
-    <>
-    </>
+    <main className={state.theme}>
+      <Nav />
+    </main>
   );
 }
-
-export default App;

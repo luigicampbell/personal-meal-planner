@@ -16,7 +16,6 @@ const { Provider } = store;
 
 function StateProvider({ children }) {
   const [state, dispatch] = React.useReducer((state,action) => {
-    console.log('WHAT')
     switch (action.type) {
       case TOGGLE_THEME:
       const dark = !state.dark;
@@ -25,7 +24,7 @@ function StateProvider({ children }) {
         return newState;
     
       default:
-        throw new Error('WHAT THE FUCK?');
+        throw new Error('whoops!');
     }
   }, initialState);
   

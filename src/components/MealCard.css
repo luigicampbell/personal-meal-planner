@@ -1,3 +1,11 @@
 .meal-card {
-  margin: 1em;
+  margin: 1em 1em 0;
+}
+
+.meal-card:first-child {
+  padding-top: 2.35em;
+}
+
+.inner-card {
+  min-height: 100%;
 }

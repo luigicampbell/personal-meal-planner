@@ -41,13 +41,17 @@ body {
     inset 1px 1px 1px var(--dark-bg-dark-shadow);
 }
 
-main {
+.main {
   background: var(--bg-color);
   display: grid;
-  grid-auto-rows: 1fr auto;
+  grid-template-rows: repeat(auto, 250px 1fr);
   min-height: 100vh;
   min-width: 100vw;
-  margin-top: 3em;
+}
+
+main {
+  background: var(--bg-color);
+  margin-bottom: 2em;
 }
 
 nav {
@@ -65,3 +69,4 @@ h1 {
   color: var(--primary);
   font-family: 'Playball', cursive;
 }
+

@@ -2,7 +2,7 @@ import React from "react";
 import {
   Card,
   CardContent,
-  CardMedia,
+  CardHeader,
   Body2,
   CardAction,
   Button,
@@ -23,8 +23,8 @@ export default function MealCard({ breakfast, lunch, dinner, id, date }) {
   const today = new Date(date).toLocaleDateString(undefined, options);
   return (
     <div className="meal-card">
-      <Card dark={state.dark} flat>
-        <CardMedia dark={state.dark} src={src} title={today} />
+      <Card dark={state.dark} className="inner-card">
+        <CardHeader dark={state.dark} title={today} />
         <CardContent>
           <Subtitle2 secondary style={{ marginBottom: "4px" }}>
             Breakfast: {breakfast}
@@ -35,10 +35,10 @@ export default function MealCard({ breakfast, lunch, dinner, id, date }) {
           </Body2>
         </CardContent>
         <CardAction>
-          <Button text color="var(--primary)">
+          <Button rounded text color="var(--primary)">
             edit
           </Button>
-          <Button text color="var(--primary)">
+          <Button rounded text color="var(--primary)">
             ingredients
           </Button>
         </CardAction>

@@ -1,0 +1,13 @@
+footer {
+  background: var(--bg-color);
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+  min-width: 100vw;
+  padding: .5em;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}

@@ -5,21 +5,21 @@ import { mdiCalendar } from "@mdi/js";
 import { store } from "../store";
 import { TOGGLE_THEME } from "../store/actions";
 import "ui-neumorphism/dist/index.css";
-import "./Nav.css";
+import styles from "./Nav.module.css";
 
 export default function Nav() {
   const { state, dispatch } = React.useContext(store);
   // console.log('NAV->',state)
   return (
-    <header>
+    <header className={styles.header}>
       <nav className={state.theme}>
-        <h1>
+        <h1 className={styles.h1}>
           <Avatar>
             <Icon path={mdiCalendar} size={1} />
           </Avatar>
           Meal Planner
         </h1>
-        <ul>
+        <ul className={styles.ul}>
           <li>
             <Switch
               checked={state.dark}

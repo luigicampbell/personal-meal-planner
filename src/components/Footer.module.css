@@ -1,4 +1,4 @@
-footer {
+.footer {
   background: var(--bg-color);
   position: fixed;
   bottom: 0;
@@ -7,7 +7,7 @@ footer {
   padding: .5em;
 }
 
-.footer {
+.btnGroup {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }

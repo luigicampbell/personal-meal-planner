@@ -1,11 +1,11 @@
 import React from "react";
-import { store } from "./store";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import CardList from "./components/CardList";
+import { POPULATE_MEALS } from "../store/actions";
+import { store } from "../store";
+import Nav from "./Nav";
+import Footer from "./Footer";
+import CardList from "./CardList";
 import { Divider } from "ui-neumorphism";
 import "ui-neumorphism/dist/index.css";
-import "./index.css";
 
 const mockData = [
   {
@@ -46,14 +46,36 @@ const mockData = [
 ];
 
 export default function App() {
-  const { state } = React.useContext(store);
-  // console.log('APP->',state);
+  const { state, dispatch } = React.useContext(store);
+  console.log("APP->", state);
+  const { dark, loaded, meals, theme } = state;
+
+  const fetchData = React.useCallback(async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts").catch(
+      (error) => {
+        console.error(error);
+      }
+    );
+    const meals = await res.json();
+    console.log("MEALS->", meals);
+    if(meals.length === 0) {
+      dispatch({ type: POPULATE_MEALS, data: meals });
+    }
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    console.log("LOADED=>", loaded);
+    if (!loaded) {
+      fetchData();
+    }
+  }, [fetchData, loaded]);
+
   return (
     <div className="main">
-      <Nav dark={state.dark} />
-      <main className={state.theme}>
+      <Nav dark={dark} />
+      <main className={theme}>
         <CardList meals={mockData} />
-        <Divider dark={state.dark} />
+        <Divider dark={dark} />
       </main>
       <Footer />
     </div>

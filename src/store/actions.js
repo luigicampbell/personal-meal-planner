@@ -1,1 +1,2 @@
 export const TOGGLE_THEME = 'TOGGLE_THEME';
+export const POPULATE_MEALS = 'POPULATE_MEALS';

@@ -3,22 +3,22 @@ import Icon from "@mdi/react";
 import { ToggleButton, ToggleButtonGroup } from "ui-neumorphism";
 import { mdiChartArc, mdiCalendar, mdiFormatListChecks } from "@mdi/js";
 import { store } from "../store";
+import { TOGGLE_ACTIVE } from "../store/actions";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
-  const [active, setActive] = React.useState(1);
+  // const [active, setActive] = React.useState(1);
   const { state, dispatch } = React.useContext(store);
+  const { active } = state;
   const mandatoryGroupChange = (e) => {
-    const btn = document.querySelector('.first svg');
-    btn.setAttribute("color", state.dark ? "var(--text-color)":"")
     console.log("EVENT->", e);
-    setActive(e.active);
+    // setActive(e.active);
+    dispatch({type:TOGGLE_ACTIVE, data:e.active})
   };
   // console.log('ACTIVE->',active,active==1)
   React.useEffect(() => {
-    const btn = document.querySelector('.first svg');
-    // console.log("BTN->", btn);
-    active === 1 && btn.setAttribute("color","var(--primary)");
+    const btn = document.querySelector('.first button');
+    active === 1 && btn.click();
   });
 
   return (

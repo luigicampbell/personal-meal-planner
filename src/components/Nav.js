@@ -1,11 +1,12 @@
 import React from "react";
-import { Avatar, Switch } from "ui-neumorphism";
-import Icon from "@mdi/react";
-import { mdiCalendar } from "@mdi/js";
+import dynamic from "next/dynamic";
+import { Switch } from "ui-neumorphism";
 import { store } from "../store";
 import { TOGGLE_THEME } from "../store/actions";
 import "ui-neumorphism/dist/index.css";
 import styles from "./Nav.module.css";
+
+const Logo = dynamic(() => import('./Logo'));
 
 export default function Nav() {
   const { state, dispatch } = React.useContext(store);
@@ -14,10 +15,7 @@ export default function Nav() {
     <header className={styles.header}>
       <nav className={state.theme}>
         <h1 className={styles.h1}>
-          <Avatar>
-            <Icon path={mdiCalendar} size={1} />
-          </Avatar>
-          Meal Planner
+          <Logo />
         </h1>
         <ul className={styles.ul}>
           <li>

@@ -3,7 +3,15 @@
 }
 
 .mealCard:first-child {
-  padding-top: 2.35em;
+  padding-top: 2.5em;
+}
+
+.cardHeader {
+  font-size: 1.25em;
+}
+
+.cardActions {
+  padding:.25em;
 }
 
 .innerCard {

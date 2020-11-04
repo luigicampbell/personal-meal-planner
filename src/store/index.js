@@ -1,5 +1,5 @@
 import React from "react";
-import { TOGGLE_THEME, POPULATE_MEALS } from "./actions";
+import { TOGGLE_THEME, TOGGLE_ACTIVE, POPULATE_MEALS } from "./actions";
 
 const themes = {
   dark: "theme--dark",
@@ -7,6 +7,7 @@ const themes = {
 };
 
 const initialState = {
+  active: 1,
   dark: false,
   loaded: false,
   meals: [],
@@ -26,8 +27,11 @@ function StateProvider({ children }) {
         newState.dark = dark;
         newState.theme = theme;
         return newState;
+      case TOGGLE_ACTIVE:
+        // console.log(action);
+        newState.active = action.data;
+        return newState;
       case POPULATE_MEALS:
-      console.log(action)
         newState.meals = action.data;
         newState.loaded = true;
         return newState;

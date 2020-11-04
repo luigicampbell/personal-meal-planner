@@ -1,12 +1,12 @@
 import React from "react";
-import Home from "./index";
+import App from "./index";
 import { StateProvider } from "../store";
 import "./index.css";
 
 export default function MealPlanner() {
   return (
     <StateProvider>
-      <Home />
+      <App />
     </StateProvider>
   );
 }

@@ -1,19 +1,20 @@
 import React from "react";
+import Icon from "@mdi/react";
 import {
+  Body2,
   Card,
   CardContent,
   CardHeader,
-  Body2,
   CardAction,
-  Button,
-  Subtitle2,
+  IconButton,
+  Overline,
 } from "ui-neumorphism";
+import { mdiFridge, mdiPencilCircle } from "@mdi/js";
 import { store } from "../store";
 import styles from "./MealCard.module.css";
 
 export default function MealCard({ breakfast, lunch, dinner, id, date }) {
   const { state } = React.useContext(store);
-  const src = `https://picsum.photos/id/${id}/300/200`;
   const options = {
     weekday: "long",
     year: "numeric",
@@ -23,24 +24,30 @@ export default function MealCard({ breakfast, lunch, dinner, id, date }) {
   const today = new Date(date).toLocaleDateString(undefined, options);
   return (
     <div className={styles.mealCard}>
-      <Card dark={state.dark} className={styles.innerCard}>
-        <CardHeader dark={state.dark} title={today} />
+      <Card dark={state.dark} className={styles.innerCard} loading={true}>
+        <CardHeader
+          action={
+            <IconButton rounded text={false} color="var(--success)">
+              <Icon path={mdiPencilCircle} size={1} />
+            </IconButton>
+          }
+          dark={state.dark}
+          title={today}
+          className={styles.cardHeader}
+        />
+
         <CardContent>
-          <Subtitle2 secondary style={{ marginBottom: "4px" }}>
-            Breakfast: {breakfast}
-          </Subtitle2>
-          <Body2>
-            <strong>Lunch:</strong> {lunch} <br />
-            <em>Dinner:</em> {dinner}
-          </Body2>
+          <Overline>
+            <strong>Breakfast:</strong> {breakfast}
+          </Overline>
+          <Overline>Lunch: {lunch}</Overline>
+          <Overline>Dinner: {dinner}</Overline>
+          <Body2></Body2>
         </CardContent>
-        <CardAction>
-          <Button rounded text color="var(--primary)">
-            edit
-          </Button>
-          <Button rounded text color="var(--primary)">
-            ingredients
-          </Button>
+        <CardAction className={styles.cardActions}>
+          <IconButton rounded text={false} color="var(--primary)">
+            <Icon path={mdiFridge} size={1} />
+          </IconButton>
         </CardAction>
       </Card>
     </div>
